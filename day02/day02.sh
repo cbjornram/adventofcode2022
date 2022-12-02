@@ -4,13 +4,9 @@ input="input.txt"
 n=1
 totalScore=0
 score=0
+IFS=' '
 
 while read -r line; do
-
-  # Replace ABC/XYZ with 123
-  line=$(echo "$line" | tr AX 1 | tr BY 2 | tr CZ 3)
-
-  IFS=' '
   read -a hand <<< "$line"
 
   # Is it equal
@@ -19,7 +15,7 @@ while read -r line; do
     score=$((hand[1]+3))
 
   # Is it a loss
-elif ([ ${hand[0]} -gt ${hand[1]} ] && !([ ${hand[0]} -eq 3 ] && [ ${hand[1]} -eq 1 ])) || ([ ${hand[0]} -eq 1 ] && [ ${hand[1]} -eq 3 ])
+  elif ([ ${hand[0]} -gt ${hand[1]} ] && !([ ${hand[0]} -eq 3 ] && [ ${hand[1]} -eq 1 ])) || ([ ${hand[0]} -eq 1 ] && [ ${hand[1]} -eq 3 ])
   then
     score=${hand[1]}
 
@@ -32,6 +28,6 @@ elif ([ ${hand[0]} -gt ${hand[1]} ] && !([ ${hand[0]} -eq 3 ] && [ ${hand[1]} -e
   totalScore=$(($totalScore+$score))
 
   n=$(($n+1))
-done < $input
+done < <(cat "$input" | tr AXBYCZ 112233)
 
 echo "Total score: $totalScore"
