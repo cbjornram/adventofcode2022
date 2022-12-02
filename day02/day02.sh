@@ -2,8 +2,6 @@
 
 input="input.txt"
 n=1
-totalScore=0
-score=0
 IFS=' '
 
 while read -r line; do
