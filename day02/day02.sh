@@ -7,7 +7,7 @@ score=0
 IFS=' '
 
 while read -r line; do
-  read -a hand <<< "$line"
+  read -a hand <<< $line
 
   # Is it equal
   if [ ${hand[0]} -eq ${hand[1]} ]
@@ -28,6 +28,6 @@ while read -r line; do
   totalScore=$(($totalScore+$score))
 
   n=$(($n+1))
-done < <(cat "$input" | tr AXBYCZ 112233)
+done < <(tr AXBYCZ 112233 < $input)
 
 echo "Total score: $totalScore"
