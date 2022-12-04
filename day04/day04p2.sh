@@ -12,7 +12,7 @@ while read -r line; do
   IFS='-' read -a elf1Section <<< "${elf[1]}"
 
   # Find section overlaps
-  if ([ ${elf0Section[1]} -ge ${elf1Section[0]} ] && [ ${elf0Section[0]} -le ${elf1Section[1]} ])
+  if [ ${elf0Section[1]} -ge ${elf1Section[0]} ] && [ ${elf0Section[0]} -le ${elf1Section[1]} ]
   then
     numberOfPairs=$(($numberOfPairs+1))
   fi
