@@ -2,7 +2,8 @@
 
 # ************* Disclaimer *************
 #
-# This was the first time I ever needed arrays of arrays in Bash.
+# This was the first time I ever needed arrays of arrays in Bash
+# (which, as I quickly realised, does not exist in version 3.2).
 # Starting with this challanges way to late in the day for proper
 # research, I chose to do it the ugly way.
 #
